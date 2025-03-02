@@ -12,15 +12,17 @@
 html {
   font-family: 'Inter', sans-serif;
   height: 100%;
+  width: 100%;
 }
 
 body {
   background-color: #FFF7ED;
   min-height: 100dvh;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 #root {
@@ -221,6 +223,7 @@ footer {
   width: 100%;
   text-align: left;
   padding-inline: 20px;
+  white-space: nowrap;
 }
 
 .vans-main h2 {
@@ -233,29 +236,34 @@ footer {
 .vans-filter-container {
   width: 100%;
   display: flex;
-  justify-content: space-between;
   margin-top: 20px;
   padding-inline: 20px;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .vans-filters {
   display: flex;
+  align-items: center;
+  margin-right: 80px;
 }
 
-.vans-filters  button {
+.vans-filters  a {
+  display: flex;
   background-color: #FFEAD0;
   color: #4D4D4D;
-  text-align: center;
   border: none;
   border-radius: 5px;
   font-weight: 500;
   margin-right: 15px;
   height: 40px;
   min-width: 100px;
+  align-items: center;
+  justify-content: center;
 }
 
-.vans-filters  button:hover,
-.vans-filters  button:focus {
+.vans-filters  a:hover,
+.vans-filters  a:focus {
   background-color: #ffead07a;
 }
 
@@ -275,19 +283,22 @@ footer {
 }
 
 /* Van Cards styles */
+.vans-main {
+  flex-grow: unset;
+}
 .van-cards-container {
   margin-top: 40px;
   margin-bottom: 60px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
+  gap: 10px;
 }
 
 .van-card {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: min(230px, 100%);
+  width: min(140px, 100%);
   border-radius: 5px;
   overflow: hidden;
   margin-inline: auto;
@@ -312,7 +323,7 @@ footer {
 .van-price {
   color: #161616;
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 0.875rem;
 }
 
 .van-price-container {
@@ -323,20 +334,21 @@ footer {
 
 .per-day {
   font-weight: 500;
-  font-size: 0.875;
+  font-size: 0.7rem;
   color: #4D4D4D;
 }
 
 .van-type {
   border-radius: 5px;
   color: #FFEAD0;
-  width: 85px;
-  height: 33px;
-  padding-inline: 20px;
+  width: 50px;
+  height: 20px;
+  padding: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
+  font-weight: 400;
+  font-size: 0.75rem;
 }
 
 .simple {
@@ -433,7 +445,7 @@ footer {
   flex-wrap: nowrap;
   padding-inline: 20px;
   padding-block: 20px;
-  gap: 30px;
+  gap: 20px;
   font-weight: 500;
   font-size: 1.125rem;
 }
@@ -558,9 +570,10 @@ footer {
 
 .host-van-detail-name {
   font-weight: 700;
-  font-size: 1.625rem;
+  font-size: 1.25rem;
   margin-block: 20px 5px;
   color: #161616;
+  white-space: nowrap;
 }
 
 .host-van-detail-price {
@@ -621,4 +634,42 @@ footer {
 .host-van-detail-photos > img {
   width: 25%;
   border-radius: 5px;
+}
+
+/* Media Query styles */
+@media screen and (min-width: 576px) {
+  .host-navbar {
+    gap: 30px;
+  }
+
+  .host-van-detail-name {
+    font-size: 1.615rem;
+    }
+
+  .van-cards-container {
+    gap: 20px;
+  }
+
+  .van-card {
+    width: min(220px, 100%);
+  }
+
+  .van-name,
+  .van-price {
+    font-size: 1.25rem;
+  }
+
+  .per-day {
+    font-size: 0.875rem;
+  }
+
+  .van-type {
+    width: 85px;
+    height: 33px;
+    font-weight: 500;
+    font-size: 1rem;
+  }
+
+  
+  
 }

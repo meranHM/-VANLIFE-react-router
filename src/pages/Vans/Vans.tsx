@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react"
 import {Van} from '../../types.ts'
-import { Link } from "react-router"
+import { useSearchParams, Link } from "react-router"
 
 export default function Vans() {
     const [vansList, setVansList] = useState<Van[]>([])
+    const [searchParams, setSearchParams] = useSearchParams()
+    const typeFilter = searchParams.get("type")
 
+    const filteredVans = 
+            typeFilter 
+            ? vansList.filter(vanObj => vanObj.type === typeFilter)
+            : vansList
 
     useEffect(() => {
         fetch("/api/vans")
@@ -12,7 +18,7 @@ export default function Vans() {
             .then(data => setVansList(data.vans))
     }, [])
 
-    const vanElements = vansList.map((vanObj) => {
+    const vanElements = filteredVans.map((vanObj) => {
         const vanType = vanObj.type
         const capVanType = vanType.charAt(0).toUpperCase() + vanType.slice(1)
         
@@ -49,14 +55,31 @@ export default function Vans() {
             
             <section className="vans-filter-container">
                 <div className="vans-filters">
-                    <button>Simple</button>
-                    <button>Luxury</button>
-                    <button>Rugged</button>
+                    <Link 
+                        to="?type=simple"
+                        className="simple"
+                    >
+                        Simple
+                    </Link>
+                    <Link 
+                        to="?type=luxury"
+                        className=""
+                    >
+                        Luxury
+                    </Link>
+                    <Link 
+                        to="?type=rugged"
+                        className=""
+                    >
+                        Rugged
+                    </Link>
                 </div>
                 <div>
-                    <button className="vans-clear-filter-btn">
+                    <Link 
+                        to="."
+                        className="vans-clear-filter-btn">
                         Clear filters
-                    </button>
+                    </Link>
                 </div>
             </section>
             <section className="van-cards-container">
