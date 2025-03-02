@@ -4,7 +4,7 @@ import { useSearchParams, Link } from "react-router"
 
 export default function Vans() {
     const [vansList, setVansList] = useState<Van[]>([])
-    const [searchParams, setSearchParams] = useSearchParams()
+    const [searchParams] = useSearchParams()
     const typeFilter = searchParams.get("type")
 
     const filteredVans = 
@@ -41,9 +41,9 @@ export default function Vans() {
                             <span className="per-day">/day</span>
                         </div>
                     </div>
-                    <span className={`van-type ${vanObj.type}`}>
+                    <i className={`van-type ${vanObj.type} selected`}>
                         {capVanType}
-                    </span>
+                    </i>
                 </Link>    
             </article>
         )
@@ -57,19 +57,19 @@ export default function Vans() {
                 <div className="vans-filters">
                     <Link 
                         to="?type=simple"
-                        className="simple"
+                        className="van-type simple"
                     >
                         Simple
                     </Link>
                     <Link 
                         to="?type=luxury"
-                        className=""
+                        className="van-type luxury"
                     >
                         Luxury
                     </Link>
                     <Link 
                         to="?type=rugged"
-                        className=""
+                        className="van-type rugged"
                     >
                         Rugged
                     </Link>

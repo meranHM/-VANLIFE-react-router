@@ -262,9 +262,29 @@ footer {
   justify-content: center;
 }
 
-.vans-filters  a:hover,
-.vans-filters  a:focus {
-  background-color: #ffead07a;
+.van-type:hover,
+.van-type:focus {
+  color: #FFEAD0;
+  /* outline: none; */
+}
+
+.van-type.selected {
+  color: #FFEAD0;
+}
+
+.van-type.simple:hover,
+.van-type.simple.selected {
+  background-color: #E17654;
+}
+
+.van-type.rugged:hover,
+.van-type.rugged.selected {
+  background-color: #115E59;
+}
+
+.van-type.luxury:hover,
+.van-type.luxury.selected {
+  background-color: #161616;
 }
 
 .vans-clear-filter-btn {
