@@ -1,7 +1,8 @@
+import { requireAuth } from "../../utils"
 
 
 export async function loader() {
-    return null
+    return await requireAuth()
 }
 
 export default function Reviews() {

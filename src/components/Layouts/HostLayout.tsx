@@ -7,6 +7,8 @@ export default function HostLayout() {
         color: "#161616"
     }
 
+    
+
     return (
         <>
             <nav className="host-navbar">

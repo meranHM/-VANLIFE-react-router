@@ -1,10 +1,15 @@
-import { Link } from "react-router"
+import { Link, LoaderFunctionArgs, useLoaderData } from "react-router"
 import { useState } from "react"
+
+export function loader({ request }: LoaderFunctionArgs) {
+    return new URL(request.url).searchParams.get("message")
+}
 
 export default function Login() {
     const [loginFormData, setLoginFormData] = useState({
         email: "", password: ""
     })
+    const loginWarning = useLoaderData()
 
     function handleSubmit(formData: FormData) {
         const email = formData.get("email")
@@ -23,6 +28,7 @@ export default function Login() {
         <main>
             <section className="login-form-container">
                 <h2> Sign in to your account</h2>
+                <h3>{loginWarning}</h3>
                 <form action={handleSubmit}>
                     <input
                         className="email-input"

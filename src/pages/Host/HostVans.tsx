@@ -2,6 +2,7 @@ import { Link, useLoaderData } from "react-router"
 import { Van } from "../../types"
 import { getHostVans } from "../../api"
 
+
 export async function loader() {
     return getHostVans()
 }

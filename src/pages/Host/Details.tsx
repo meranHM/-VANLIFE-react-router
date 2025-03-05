@@ -1,10 +1,6 @@
 import { useOutletContext } from "react-router"
 import { Van } from "../../types"
 
-export async function loader() {
-    return null
-}
-
 export default function Details() {
     const { vanDetail } = useOutletContext<{vanDetail: Van}>()
 

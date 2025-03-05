@@ -2,6 +2,7 @@ import { NavLink, useLoaderData, Link, Outlet, LoaderFunctionArgs } from "react-
 import { ArrowLeft } from "lucide-react"
 import { getHostVans } from "../../api"
 
+
 export async function loader({params}: LoaderFunctionArgs) {
     return getHostVans(params.id)
 }
