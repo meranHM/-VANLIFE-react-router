@@ -1,28 +1,23 @@
-import { Link } from "react-router"
-import { useEffect, useState } from "react"
+import { Link, useLoaderData } from "react-router"
 import { Van } from "../../types"
+import { getHostVans } from "../../api"
 
-
+export async function loader() {
+    return getHostVans()
+}
 
 export default function HostVans() {
-    const [hostVans, setHostVans] = useState<Van[]>([])
-
-    useEffect(() => {
-        fetch("/api/host/host-vans")
-            .then(res => res.json())
-            .then(data => setHostVans(data.vans))
-    }, [])
+    const hostVans: Van[] = useLoaderData()
 
     const hostVansElements = hostVans.map(vanObj => {
         return (
             <Link 
                 key={vanObj.id}
-                to={`/host/host-vans/${vanObj.id}`}
+                to={vanObj.id}
             >
                 <article 
                 className="host-van-card"
             >
-
                     <div className="host-van-picture">
                         <img 
                             src={vanObj.imageUrl} 
@@ -40,17 +35,10 @@ export default function HostVans() {
 
     return (
         <main className="host-vans-main">
-            
-            { hostVans.length > 0 ? (
-            <>
                 <h2 className="host-vans-header">Your listed vans</h2>
                 <div className="host-vans-container">
                     {hostVansElements}
                 </div>
-            </>
-            ) : (
-                <h2>Loading ...</h2>
-            )}
         </main>
     )
 }

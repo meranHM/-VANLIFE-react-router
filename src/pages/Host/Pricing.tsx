@@ -1,7 +1,12 @@
-import { useVanDetailContext } from "../../../context"
+import { useOutletContext } from "react-router"
+import { Van } from "../../types"
+
+export async function loader() {
+    return null
+}
 
 export default function Pricing() {
-    const vanDetail = useVanDetailContext()
+    const { vanDetail } = useOutletContext<{vanDetail: Van}>()
 
     return (
         <section className="host-van-detail-pricing">

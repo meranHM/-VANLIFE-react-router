@@ -8,3 +8,10 @@ export interface Van {
     type: string
 }
 
+
+//Error type
+export interface ErrorType {
+    message?: string
+    statusText?: string
+    status?: number
+}

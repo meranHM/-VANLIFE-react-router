@@ -1,35 +1,31 @@
-import { useParams, Link } from "react-router"
-import { useState, useEffect } from "react"
+import { Link, useLocation, LoaderFunctionArgs } from "react-router"
 import { Van } from '../../types.ts'
 import { ArrowLeft } from "lucide-react"
+import { useLoaderData } from "react-router"
+import { getVans } from "../../api.ts"
+
+export async function loader({ params }: LoaderFunctionArgs) {
+    return getVans(params.id)
+}
 
 export default function VanDetails() {
-    const [vanDetail, setVanDetail] = useState<Van | null>(null)
-    const params = useParams()
+    const location = useLocation()
+    const vanDetail: Van = useLoaderData()
 
-    useEffect(() => {
-        fetch(`/api/vans/${params.id}`)
-            .then(res => res.json())
-            .then(data => setVanDetail(data.vans))
-            .catch(err => console.error("Failed to fetch van details:", err))
-    }, [params.id])
-
-    if (!vanDetail) {
-        return <p>Loading ...</p>
-    }
-    
     const vanType = vanDetail.type
     const capVanType = vanType.charAt(0).toUpperCase() + vanType.slice(1)
+    const search = location.state?.search || ""
+    const searchType = location.state?.type || "all"
 
     return (
         <main className="van-detail-main">
             <div className="van-detail-back-btn">
                 <Link 
-                    to=".."
+                    to={`..${search}`}
                     relative="path"
                 >
                     <div><ArrowLeft size={20}/></div>
-                    <p>Back to all vans</p>
+                    <p>Back to {searchType} vans</p>
                 </Link>
             </div>
             <article className="van-detail-container">

@@ -1,8 +1,13 @@
-import { useVanDetailContext } from "../../../context"
+import { useOutletContext } from "react-router"
+import { Van } from "../../types"
 
+export async function loader() {
+    return null
+}
 
 export default function Details() {
-    const vanDetail = useVanDetailContext()
+    const { vanDetail } = useOutletContext<{vanDetail: Van}>()
+
     const vanType = vanDetail.type
     const capVanType = vanType.charAt(0).toUpperCase() + vanType.slice(1)
 

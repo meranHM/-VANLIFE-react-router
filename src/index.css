@@ -72,17 +72,27 @@ header {
   align-items: center;
 }
 
+.main-navbar {
+  display: flex;
+  align-items: center;
+}
+
 .main-navbar > a {
   padding: 15px;
   color: #4D4D4D;
   font-weight: 600;
   flex-wrap: nowrap;
+  transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1)
 }
 
 .main-navbar > a:hover,
 .main-navbar > a:focus {
   color: #161616;
   text-decoration: underline;
+}
+
+.login-icon {
+  width: 30px;
 }
 
 /* Footer */
@@ -140,11 +150,12 @@ footer {
   font-weight: 700;
   border: none;
   border-radius: 5px;
+  transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1)
 }
 
 .home-hero a:hover,
 .home-hero a:hover {
-  background-color: #ff8b38e3;
+  background-color: #ff8b38cb;
 }
 
 /* About Page Styles */
@@ -212,10 +223,11 @@ footer {
   font-weight: 700;
   font-family: inherit;
   padding: 20px;
+  transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1)
 }
 
 .about-promotion a:hover {
-  background-color: #161616ea
+  background-color: #4D4D4D
 }
 
 /* Vans Page styles */
@@ -248,24 +260,24 @@ footer {
   margin-right: 80px;
 }
 
-.vans-filters  a {
+.vans-filters button {
   display: flex;
   background-color: #FFEAD0;
   color: #4D4D4D;
   border: none;
   border-radius: 5px;
-  font-weight: 500;
+  font-weight: 700;
+  font-size: 0.875rem;
   margin-right: 15px;
   height: 40px;
   min-width: 100px;
   align-items: center;
   justify-content: center;
+  transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1)
 }
 
-.van-type:hover,
-.van-type:focus {
+.van-type:hover {
   color: #FFEAD0;
-  /* outline: none; */
 }
 
 .van-type.selected {
@@ -299,7 +311,8 @@ footer {
 
 .vans-clear-filter-btn:hover,
 .vans-clear-filter-btn:focus {
-  color: #4d4d4dda;
+  color: #161616;
+  font-weight: 600;
 }
 
 /* Van Cards styles */
@@ -465,20 +478,21 @@ footer {
   flex-wrap: nowrap;
   padding-inline: 20px;
   padding-block: 20px;
-  gap: 20px;
-  font-weight: 500;
+  gap: 25px;
   font-size: 1.125rem;
 }
 
 .host-navbar > a {
   color: #4D4D4D;
+  transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 500;
 }
 
 .host-navbar > a:hover,
 .host-navbar > a:focus {
   color: #161616;
   text-decoration: underline;
-  font-weight: 700;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
 }
 
 /* Host Vans List Page styles */
@@ -499,6 +513,7 @@ footer {
   font-size: 2rem;
   padding: 20px;
 }
+
 /* Host Van Cards styles  */
 .host-van-card {
   display: flex;
@@ -545,12 +560,13 @@ footer {
   gap: 5px;
   font-weight: 500;
   text-decoration: underline;
-  color: #201F1D;
+  color: #161616;
+  transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .host-van-detail-back-btn > a:hover,
 .host-van-detail-back-btn > a:focus {
-  color: #4d4d4dda;
+  color: #4D4D4D;
 }
 
 .host-van-detail-main {
@@ -616,6 +632,13 @@ footer {
 
 .host-van-detail-navbar > a {
   color: #4D4D4D;
+  transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.host-van-detail-navbar > a:hover {
+  color: #161616;
+  text-decoration: underline;
+  text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
 }
 
 /* Host Van Detail Description styles */
@@ -656,6 +679,102 @@ footer {
   border-radius: 5px;
 }
 
+/* 404 Page styles */
+.not-found-container {
+  width: 100%;
+  flex-grow: 1;
+  padding-inline: 20px;
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.not-found-container h2 {
+  align-self: center;
+  font-weight: 700;
+  font-size: 2rem;
+  line-height: 42px;
+}
+
+.not-found-container a {
+  margin-top: 50px;
+  width: 100%;
+  height: 55px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #161616;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 1.125rem;
+  border-radius: 5px;
+  transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1)
+}
+
+.not-found-container a:hover,
+.not-found-container a:focus {
+  background-color: #4D4D4D;
+}
+
+/* Login Page styles */
+.login-form-container {
+  flex-grow: 1;
+  width: 100%;
+  padding-inline: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.login-form-container form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.login-form-container h2 {
+  font-weight: 700;
+  font-size: 2rem;
+  color: #161616;
+}
+
+.email-input {
+  height: 45px;
+  border-radius: 6px 6px 0 0;
+  padding: 9px 13px;
+  border: 1px solid #D1D5DB;
+}
+
+.email-input::placeholder {
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.password-input {
+  height: 45px;
+  border-radius: 0 0 6px 6px;
+  padding: 9px 13px;
+  border: 1px solid #D1D5DB;
+}
+
+.password-input::placeholder {
+  font-weight: 400;
+  font-size: 1rem;
+}
+
+.login-form-container form > button {
+  background-color: #FF8C38;
+  color: #FFFFFF;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  border-radius: 6px;
+  margin-top: 20px;
+  height: 55px;
+}
+
 /* Media Query styles */
 @media screen and (min-width: 576px) {
   .host-navbar {
@@ -683,13 +802,14 @@ footer {
     font-size: 0.875rem;
   }
 
+  .vans-filters button {
+    font-weight: 600;
+    font-size: 1rem;
+  }
   .van-type {
     width: 85px;
     height: 33px;
     font-weight: 500;
     font-size: 1rem;
   }
-
-  
-  
 }

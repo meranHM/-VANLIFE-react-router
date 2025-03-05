@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router"
-
+import AvatarIcon from './../assets/avatar-icon.png'
 
 export default function Header() {
     const activeStyle = {
@@ -35,6 +35,13 @@ export default function Header() {
                     >
                         Vans
                     </NavLink>
+                    <Link to="login" className="login-link">
+                        <img 
+                            src={AvatarIcon} 
+                            alt="avatar icon" 
+                            className="login-icon"
+                        />
+                    </Link>
                 </nav>
             </section>
         </header>
