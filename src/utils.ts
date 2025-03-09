@@ -1,15 +1,13 @@
-import { redirect } from "react-router"
+import { redirect } from "./mutate";
 
-export async function requireAuth(request: Request) {
-    const isLoggedIn: boolean = false
-
-    if (!isLoggedIn) {
-        const url = new URL(request.url).pathname
-        const params = new URLSearchParams()
-        params.set("redirectTo", url)
+export async function requireAuth({ request }: {request: Request}) {
+  const pathname = new URL(request.url).pathname
+  const isLoggedIn = localStorage.getItem("loggedin")
   
-        return redirect(`/login?${params}`)
-    }
 
-    return null;
+  if (!isLoggedIn) {
+    return redirect(`/login?message= You must log in first&redirectTo=${pathname}`); 
+  }
+  
+  return null;
 }

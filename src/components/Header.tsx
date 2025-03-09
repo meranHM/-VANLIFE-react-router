@@ -1,5 +1,6 @@
 import { Link, NavLink } from "react-router"
 import AvatarIcon from './../assets/avatar-icon.png'
+import { X } from "lucide-react"
 
 export default function Header() {
     const activeStyle = {
@@ -42,6 +43,11 @@ export default function Header() {
                             className="login-icon"
                         />
                     </Link>
+                    <button 
+                        onClick={() => localStorage.clear()}
+                    >
+                        <X />
+                    </button>
                 </nav>
             </section>
         </header>

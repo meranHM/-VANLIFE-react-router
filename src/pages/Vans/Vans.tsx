@@ -1,15 +1,14 @@
 import { Van } from '../../types.ts'
 import { useSearchParams, Link, useLoaderData } from "react-router"
 import { getVans } from "../../api.ts"
-import { useState } from 'react'
 
 export async function loader() {
-    return getVans()
+    const data = await getVans()
+    return data
 }
 
 export default function Vans() {
     const [searchParams, setSearchParams] = useSearchParams()
-    const [error] = useState<Error | null>(null)
     const vansList: Van[] = useLoaderData()
 
     const typeFilter = searchParams.get("type")
@@ -22,6 +21,7 @@ export default function Vans() {
     const vanElements = filteredVans.map((vanObj) => {
         const vanType = vanObj.type
         const capVanType = vanType.charAt(0).toUpperCase() + vanType.slice(1)
+    
         
         return (
             <article
@@ -53,12 +53,6 @@ export default function Vans() {
             </article>
         )
     })
-
-
-    if (error) {
-        return <h2 aria-live="assertive">There was an error: {error.message}</h2>
-    }
-
 
     return (
         <main className="vans-main">

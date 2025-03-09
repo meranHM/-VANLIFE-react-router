@@ -2,10 +2,13 @@ import { Link, useLocation, LoaderFunctionArgs } from "react-router"
 import { Van } from '../../types.ts'
 import { ArrowLeft } from "lucide-react"
 import { useLoaderData } from "react-router"
-import { getVans } from "../../api.ts"
+import { getVan } from "../../api.ts"
 
 export async function loader({ params }: LoaderFunctionArgs) {
-    return getVans(params.id)
+    if (!params.id) {
+        throw new Error("Van ID is required")
+    }
+    return await getVan(params.id)
 }
 
 export default function VanDetails() {

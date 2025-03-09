@@ -1,15 +1,24 @@
 import { NavLink, useLoaderData, Link, Outlet, LoaderFunctionArgs } from "react-router"
 import { ArrowLeft } from "lucide-react"
-import { getHostVans } from "../../api"
+import { getVan } from "../../api"
+import { requireAuth } from "../../utils"
 
 
-export async function loader({params}: LoaderFunctionArgs) {
-    return getHostVans(params.id)
+export async function loader({params, request}: LoaderFunctionArgs) {
+    const authResult = await requireAuth({ request })
+    if (authResult) return authResult
+
+    if (!params.id) {
+        throw new Error("Van ID is required")
+    }
+
+    return getVan(params.id)
 }
 
 export default function HostVanDetail() {
     const currentVan = useLoaderData()
-    const vanDetail = currentVan[0]
+    console.log(currentVan)
+
 
     const activeStyle = {
         fontWeight: "700",
@@ -17,7 +26,7 @@ export default function HostVanDetail() {
         color: "#161616"
     }
 
-    const vanType = vanDetail.type
+    const vanType = currentVan.type
     const capVanType = vanType.charAt(0).toUpperCase() + vanType.slice(1)
 
     return (
@@ -34,20 +43,20 @@ export default function HostVanDetail() {
             <article className="host-van-detail-container">
                 <div className="host-van-detail-card">
                     <img 
-                        src={vanDetail.imageUrl} 
-                        alt={`Image of ${vanDetail.name}`} 
+                        src={currentVan.imageUrl} 
+                        alt={`Image of ${currentVan.name}`} 
                     />
                     <div className="host-van-detail-info">
                     <span 
-                        className={`van-type ${vanDetail.type}`}
+                        className={`van-type ${currentVan.type}`}
                     >
                         {capVanType}
                     </span>
                     <h2 className="host-van-detail-name">
-                        {vanDetail.name}
+                        {currentVan.name}
                     </h2>
                     <p className="host-van-detail-price">
-                        ${vanDetail.price}
+                        ${currentVan.price}
                         <span className="per-day">/day</span>
                     </p>
                     </div>
@@ -76,7 +85,7 @@ export default function HostVanDetail() {
                     Photos
                 </NavLink>
             </nav>
-            <Outlet context={{vanDetail}}/>
+            <Outlet context={{currentVan}}/>
         </>
     )
 }

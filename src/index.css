@@ -44,6 +44,10 @@ main {
   flex-grow: 1;
 }
 
+h2, p {
+  color: #161616;
+}
+
 a {
   text-decoration: none;
   color: #000000;
@@ -98,13 +102,16 @@ header {
 /* Footer */
 footer {
   background-color: #252525;
-  color: #AAAAAA;
   width: min(600px, 100%);
   text-align: center;
   padding: 25px;
   font-weight: 500;
   font-size: 1.15rem;
   margin-top: auto;
+}
+
+footer > p {
+  color: #AAAAAA;;
 }
 
 /* Home Page styles */
@@ -206,7 +213,6 @@ footer {
 }
 
 .about-promotion h3 {
-  color: #161616;
   font-weight: 700;
   font-size: 1.5rem;
 }
@@ -239,7 +245,6 @@ footer {
 }
 
 .vans-main h2 {
-  color: #161616;
   font-weight: 700;
   font-size: 2rem;
   line-height: 33px;
@@ -354,7 +359,6 @@ footer {
 
 .van-name,
 .van-price {
-  color: #161616;
   font-weight: 600;
   font-size: 0.875rem;
 }
@@ -450,7 +454,6 @@ footer {
 
 .van-detail-desc {
   font-weight: 500;
-  color: #161616;
   margin-bottom: 20px;
 }
 
@@ -470,7 +473,7 @@ footer {
   background-color: #ff8b38e3;
 }
 
-/* Dashboard Page styles */
+/* Host Page styles */
 .host-navbar {
   align-self: flex-start;
   display: flex;
@@ -495,6 +498,275 @@ footer {
   text-shadow: 0px 0px 1px rgba(0, 0, 0, 0.3);
 }
 
+/* Host Dashboard Page styles */
+.dashboard-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
+}
+
+.host-dashboard-earnings {
+  display: flex;
+  justify-content: space-between;
+  background-color: #FFEAD0;
+  align-items: center;
+  padding-inline: 20px;
+  padding-block: 20px;
+}
+
+.host-dashboard-earnings .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.host-dashboard-earnings h2 {
+  font-weight: 700;
+  font-size: 2.25rem;
+}
+
+.host-dashboard-earnings p {
+  font-weight: 500;
+}
+
+.host-dashboard-earnings h3 {
+  font-weight: 800;
+  font-size: 3rem;
+}
+
+.host-dashboard-earnings .info a {
+  font-weight: 500;
+}
+
+.host-dashboard-reviews {
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 20px;
+  padding-block: 40px;
+  background-color: #FFDDB2;
+  align-items: center;
+}
+
+.host-dashboard-reviews-score {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.host-dashboard-reviews-score h2 {
+  font-weight: 700;
+  font-size: 1.5rem;
+}
+
+.host-dashboard-reviews-score p {
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.host-dashboard-reviews-score p span {
+  font-weight: 700;
+
+}
+
+.star {
+  color: #FF8C38;
+  width: 26.5px;
+  height: 24px;
+}
+
+.host-dashboard-reviews a {
+  font-weight: 500;
+}
+
+.host-dashboard-vans {
+  padding-inline: 20px;
+}
+
+.host-dashboard-vans .top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 30px;
+}
+
+.host-dashboard-vans .top a {
+  font-weight: 500;
+}
+
+.host-vans-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+.host-van-single {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  background-color: #FFFFFF;
+  padding: 20px;
+}
+
+.host-van-single img {
+  width: 65px;
+  height: 65px;
+  border-radius: 5px;
+  margin-right: 20px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.host-van-info h3 {
+  margin-bottom: 5px;
+}
+
+.host-van-single a {
+  margin-left: auto;
+}
+
+/* Host Income Page styles */
+.host-income {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding-inline: 25px;
+  align-items: flex-start;
+}
+
+.host-income .title {
+  font-weight: 700;
+  font-size: 2.25rem;
+  margin-bottom: 20px;
+}
+
+.host-income .time-filter {
+  font-weight: 500;
+  margin-bottom: 20px;
+  color: #4D4D4D;
+}
+
+.days {
+  font-weight: 700;
+  text-decoration: underline;
+}
+
+.host-income .income-number {
+  font-weight: 800;
+  font-size: 3rem;
+}
+
+.host-income img {
+  text-align: center;
+  width: 100%;
+  margin-block: 30px;
+}
+
+.host-income .info-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-header h3 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+.transactions {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 100%;
+}
+
+.transaction {
+  width: 100%;
+  background-color: #FFFFFF;
+  border-radius: 6px;
+  padding-block: 20px;
+  padding-inline: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transaction h3 {
+  font-weight: 600;
+  font-size: 2.25rem;
+}
+
+.transaction p {
+  font-weight: 500;
+  font-size: 1.25rem;
+  color: #4D4D4D;
+}
+
+/* Host Reviews Page styles */
+.host-reviews {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding-inline: 20px;
+}
+
+.top-text {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.top-text h2 {
+  font-weight: 700;
+  font-size: 2rem;
+
+}
+
+.host-reviews img {
+  margin-block: 50px;
+  text-align: center;
+}
+
+.host-reviews h3 {
+  font-weight: 700;
+  font-size: 1.125rem;
+  margin-bottom: 20px;
+}
+
+.review {
+  margin-top: 15px;
+}
+
+.review-star {
+  color: #FF8C38;
+  margin-bottom: 15px;
+}
+
+.info {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.info .name {
+  font-weight: 600;
+}
+
+.info .date {
+  font-weight: 600;
+  color: #8C8C8C;
+}
+
+.review-text {
+  font-weight: 500;
+  font-size: 1rem;
+  margin-bottom: 15px;
+}
+
 /* Host Vans List Page styles */
 .host-vans-container {
   width: 100%;
@@ -508,7 +780,6 @@ footer {
 
 .host-vans-header {
   align-self: self-start;
-  color: #161616;
   font-weight: 700;
   font-size: 2rem;
   padding: 20px;
@@ -615,7 +886,6 @@ footer {
 .host-van-detail-price {
   font-weight: 700;
   font-size: 1.25rem;
-  color: #161616;
 }
 
 /* Host Van Detail NavBar styles */
@@ -724,7 +994,7 @@ footer {
   padding-inline: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
 }
 
@@ -732,12 +1002,17 @@ footer {
   display: flex;
   flex-direction: column;
   width: 100%;
+  margin-block: 50px;
 }
 
 .login-form-container h2 {
   font-weight: 700;
   font-size: 2rem;
-  color: #161616;
+}
+
+.login-warning {
+  margin-top: 30px;
+  color: red;
 }
 
 .email-input {
@@ -771,8 +1046,50 @@ footer {
   font-size: 1rem;
   border: none;
   border-radius: 6px;
-  margin-top: 20px;
+  margin-top: 30px;
   height: 55px;
+  transition: 200ms all cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.login-form-container form > button:hover, 
+.login-form-container form > button:focus {
+  background-color: #ff8b38d2;
+}
+
+.login-form-container form > button:disabled {
+  cursor: not-allowed;
+  background-color: #CCC;
+  color: #666;
+  opacity: 0.7;
+}
+
+.login-form-container form > button:hover, 
+.login-form-container form > button:focus {
+  background-color: #ff8b38d2;
+}
+
+.create-account {
+  text-align: center;
+  font-weight: 500;
+}
+
+.create-account a {
+  font-weight: 700;
+  color: #FF8C38;
+  margin-left: 5px;
+}
+
+/* Error Page styles */
+.error-container {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid red;
+  border-radius: 6px;
+  padding: 50px;
+  gap: 30px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.1);
 }
 
 /* Media Query styles */

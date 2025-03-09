@@ -1,8 +1,8 @@
 import { useRouteError } from "react-router"
-import { ErrorType } from "../types"
+import { LoginError } from "../types"
 
 export default function Error() {
-    const error = useRouteError() as ErrorType
+    const error = useRouteError() as LoginError
 
     return (
         <main>

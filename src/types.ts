@@ -10,8 +10,14 @@ export interface Van {
 
 
 //Error type
-export interface ErrorType {
-    message?: string
-    statusText?: string
-    status?: number
+export interface LoginError {
+    message: string
+    statusText: string
+    status: number
+}
+
+//User type
+export interface Credentials {
+    email: string;
+    password: string;
 }

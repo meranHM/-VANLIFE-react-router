@@ -1,98 +1,114 @@
-import { RouterProvider, Route, createBrowserRouter, createRoutesFromElements } from "react-router"
-import About from "./pages/About.tsx"
-import Home from "./pages/Home.tsx"
-import Vans, { loader as vansLoader } from "./pages/Vans/Vans.tsx"
-import VanDetails, { loader as vanDetailsLoader } from "./pages/Vans/VanDetails.tsx"
-import Dashboard from "./pages/Host/Dashboard.tsx"
-import Income from "./pages/Host/Income.tsx"
-import HostVans, {loader as hostVansLoader} from "./pages/Host/HostVans.tsx"
-import HostVanDetail, {loader as hostVanDetailLoader} from "./pages/Host/HostVanDetail.tsx"
-import Reviews from "./pages/Host/Reviews.tsx"
-import NotFound from "./pages/NotFound.tsx"
-import Login, {loader as loginLoader} from "./pages/Login.tsx"
-import Layout from "./components/Layouts/Layout.tsx"
-import HostLayout from "./components/Layouts/HostLayout.tsx"
-import Details from "./pages/Host/Details.tsx"
-import Pricing from "./pages/Host/Pricing.tsx"
-import Photos from "./pages/Host/Photos.tsx"
-import Error from "./components/Error.tsx"
-import "./server.js"
-import { requireAuth } from "./utils.ts"
+import {
+  RouterProvider,
+  createBrowserRouter,
+  createRoutesFromElements,
+  Route,
+} from "react-router"
+import Home from "./pages/Home"
+import About from "./pages/About"
+import Vans, { loader as vansLoader } from "./pages/Vans/Vans"
+import VanDetail, { loader as vanDetailLoader } from "./pages/Vans/VanDetails"
+import Dashboard, { loader as dashboardLoader} from "./pages/Host/Dashboard"
+import Income from "./pages/Host/Income"
+import Reviews from "./pages/Host/Reviews"
+import HostVans, { loader as hostVansLoader} from "./pages/Host/HostVans"
+import HostVanDetail, { loader as hostVanDetailLoader } from "./pages/Host/HostVanDetail"
+import HostVanInfo from "./pages/Host/Dashboard"
+import HostVanPricing from "./pages/Host/Pricing"
+import HostVanPhotos from "./pages/Host/Photos"
+import NotFound from "./pages/NotFound"
+import Login, { loader as loginLoader, action as loginAction } from "./pages/Login"
+import Layout from "./components/Layouts/Layout"
+import HostLayout from "./components/Layouts/HostLayout"
+import Error from "./components/Error"
+import { requireAuth } from "./utils"
 
+import "./server"
 
 const router = createBrowserRouter(createRoutesFromElements(
   <Route path="/" element={<Layout />}>
-    <Route index element={<Home />}/>
-    <Route path="about" element={<About />}/>
-    <Route 
-      path="login" 
+    <Route index element={<Home />} />
+    <Route path="about" element={<About />} />
+    <Route
+      path="login"
       element={<Login />}
       loader={loginLoader}
+      action={loginAction}
     />
-    <Route 
-      path="vans" 
-      element={<Vans />} 
+    <Route
+      path="vans"
+      element={<Vans />}
       errorElement={<Error />}
       loader={vansLoader}
     />
     <Route 
       path="vans/:id" 
-      element={<VanDetails />}
-      loader={vanDetailsLoader}
+      element={<VanDetail />} 
+      errorElement={<Error />}
+      loader={vanDetailLoader}
     />
+
     <Route 
       path="host" 
       element={<HostLayout />}
-      loader={async ({request}) => await requireAuth(request)}
     >
-      <Route 
-        index 
+      <Route
+        index
         element={<Dashboard />}
-        loader={async ({request}) => await requireAuth(request)}
+        errorElement={<Error />}
+        loader={dashboardLoader}
       />
-      <Route 
-        path="income" 
+      <Route
+        path="income"
         element={<Income />}
-        loader={async ({request}) => await requireAuth(request)}
+        errorElement={<Error />}
+        loader={requireAuth}
       />
-      <Route 
-        path="reviews" 
+      <Route
+        path="reviews"
         element={<Reviews />}
-        loader={async ({request}) => await requireAuth(request)}
+        errorElement={<Error />}
+        loader={requireAuth}
       />
-      <Route 
-        path="host-vans" 
+      <Route
+        path="host-vans"
         element={<HostVans />}
+        errorElement={<Error />}
         loader={hostVansLoader}
       />
-      <Route 
-        path="host-vans/:id" 
-        element={<HostVanDetail/>}
+      <Route
+        path="host-vans/:id"
+        element={<HostVanDetail />}
+        errorElement={<Error />}
         loader={hostVanDetailLoader}
       >
-        <Route 
-          index 
-          element={<Details />}
-          loader={async ({request}) => await requireAuth(request)}
+        <Route
+          index
+          element={<HostVanInfo />}
+          errorElement={<Error />}
+          loader={requireAuth}
         />
-        <Route 
-          path="pricing" 
-          element={<Pricing />}
-          loader={async ({request}) => await requireAuth(request)}
+        <Route
+          path="pricing"
+          element={<HostVanPricing />}
+          errorElement={<Error />}
+          loader={requireAuth}
         />
-        <Route 
-          path="photos" 
-          element={<Photos />}
-          loader={async ({request}) => await requireAuth(request)}
+        <Route
+          path="photos"
+          element={<HostVanPhotos />}
+          errorElement={<Error />}
+          loader={requireAuth}
         />
       </Route>
     </Route>
-    <Route path="*" element={<NotFound />}/>
+    <Route path="*" element={<NotFound />} />
   </Route>
 ))
 
 export default function App() {
   return (
-    <RouterProvider router={router}/>
+    <RouterProvider router={router} />
   )
 }
+
